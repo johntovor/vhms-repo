@@ -37,10 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'phonenumber_field',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
     # custom apps
     'core',
+    'accounts',
+    'dashboard',
 ]
+
+AUTH_USER_MODEL = 'accounts.UserAccount'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

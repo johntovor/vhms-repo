@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-12 text-center">
+            <div class="">
+                <h3 class="page-title"> CLIENT PROFILE INFORMATION </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-8 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Client Information</h4>
+                    <hr class="text-light">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">First Name</p>
+                            <h4 class="mb-3">{{ client_profile.user.first_name }}</h4>
+                        </div>
+                        {% if request.user.middle_name %}
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Middle Name</p>
+                            <h4 class="mb-3">{{ client_profile.user.middle_name }}</h4>
+                        </div>
+                        {% endif %}
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Last Name</p>
+                            <h4 class="mb-3">{{ client_profile.user.last_name }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Email</p>
+                            <h4 class="mb-3">{{ client_profile.user.email }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Gender</p>
+                            <h4 class="mb-3">{{ client_profile.user.gender }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Country</p>
+                            <h4 class="mb-3">{{ client_profile.user.client.country.name }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Region/State</p>
+                            <h4 class="mb-3">{{ client_profile.user.client.region_or_state }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">City/Town</p>
+                            <h4 class="mb-3">{{ client_profile.user.client.city_or_town }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Phone Number</p>
+                            <h4 class="mb-3">{{ client_profile.user.client.phone_number }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <p class="mb-0 pb-0">Location</p>
+                            <h4 class="mb-3">{{ client_profile.user.client.location }}</h4>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-3">
+                            <p class="mb-0 pb-0">Date of Birth</p>
+                            <h4 class="mb-3">{{ client_profile.user.client.date_of_birth }}</h4>
+                        </div>
+                    </div>
+                    <div class="col-6 pl-0">
+                        <a href="#" class="btn btn-md btn-primary">UPDATE PROFILE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

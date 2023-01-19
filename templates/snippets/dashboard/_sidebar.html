@@ -1,0 +1,150 @@
+{% load static %}
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="{% url 'dashboard:dashboard' %}"><img src="{% static 'core/assets/img/logo.png' %}"
+                alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="{% url 'dashboard:dashboard' %}"><img src="{% static 'core/assets/img/logo-mini.png' %}"
+                alt="logo" /></a>
+    </div>
+    <ul class="nav">
+        <li class="nav-item profile">
+            <div class="profile-desc">
+                <div class="profile-pic">
+                    <div class="count-indicator">
+                        <img class="img-xs rounded-circle " src="{% static 'dashboard/assets/images/faces/profile.png' %}" alt="">
+                        <span class="count bg-success"></span>
+                    </div>
+                    <div class="profile-name">
+                        <h5 class="mb-0 font-weight-normal">{{ request.user.first_name }} {% if request.user.middle_name %}{{ request.user.middle_name }}{% endif %} {{ request.user.last_name }}</h5>
+                        <span>{% if request.user.is_admin %}Administrator{% endif %}{% if request.user.is_client %}Business Owner{% endif %}</span>
+                    </div>
+                </div>
+                <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+                <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+                    aria-labelledby="profile-dropdown">
+                    <a href="{% if request.user.is_admin %}{% url 'accounts:admin-profile' %}{% endif %}{% if request.user.is_client %}{% url 'accounts:client-profile' %}{% endif %}" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-account-plus text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1 text-small">Profile</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-account-star text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1 text-small">Edit Profile</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-lock-outline  text-info"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="{% url 'accounts:signout' %}" class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-logout text-success"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1 text-small">Logout</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'dashboard:dashboard' %}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer"></i>
+                </span>
+                <span class="menu-title">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-icon">
+                    <i class="mdi mdi-database-plus text-success"></i>
+                </span>
+                <span class="menu-title">Business</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="">Register Business</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="">Approved Registration</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="">Pending Registration</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="">Rejected Registration</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <span class="menu-icon">
+                    <i class="mdi mdi-wallet"></i>
+                </span>
+                <span class="menu-title">Payments</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                    {% if request.user.is_admin %}
+                    <li class="nav-item"> <a class="nav-link" href=""> Add Payment
+                        </a></li>
+                    {% endif %}
+                    <li class="nav-item"> <a class="nav-link" href=""> Payments List </a></li>
+                </ul>
+            </div>
+        </li>
+        {% if request.user.is_admin %}
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
+                <span class="menu-icon">
+                    <i class="mdi mdi-account-group"></i>
+                </span>
+                <span class="menu-title">Users</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="users">
+                <ul class="nav flex-column sub-menu">
+                    {% if request.user.is_admin %}
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:clients' %}"> Clients
+                        </a></li>
+                    {% endif %}
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:admins' %}"> Administratators </a></li>
+                </ul>
+            </div>
+        </li>
+        {% endif %}
+        <!-- <li class="nav-item menu-items">
+            <a class="nav-link" href="">
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play"></i>
+                </span>
+                <span class="menu-title">Clients</span>
+            </a>
+        </li> -->
+        
+    </ul>
+</nav>
