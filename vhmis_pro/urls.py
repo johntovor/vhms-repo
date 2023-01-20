@@ -28,4 +28,6 @@ urlpatterns = [
     path('', include('core.urls')),
     path('', include('dashboard.urls')),
     path('', include('accounts.urls')),
+    path('dashboard/', include('departments.urls')),
+    # path('dashboard/', include('doctors.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

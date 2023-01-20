@@ -84,18 +84,14 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-database-plus text-success"></i>
                 </span>
-                <span class="menu-title">Business</span>
+                <span class="menu-title">Departments</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="">Register Business</a>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'departments:add-department' %}">Add Department</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="">Approved Registration</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="">Pending Registration</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="">Rejected Registration</a>
-                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'departments:department-list' %}">Department List</a></li>
                 </ul>
             </div>
         </li>
@@ -104,16 +100,14 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-wallet"></i>
                 </span>
-                <span class="menu-title">Payments</span>
+                <span class="menu-title">Doctors</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    {% if request.user.is_admin %}
-                    <li class="nav-item"> <a class="nav-link" href=""> Add Payment
+                    <li class="nav-item"> <a class="nav-link" href=""> Add Doctor
                         </a></li>
-                    {% endif %}
-                    <li class="nav-item"> <a class="nav-link" href=""> Payments List </a></li>
+                    <li class="nav-item"> <a class="nav-link" href=""> Doctors List </a></li>
                 </ul>
             </div>
         </li>

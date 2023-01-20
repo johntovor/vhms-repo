@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     'dashboard',
+    'departments',
+    'doctors',
 ]
 
 AUTH_USER_MODEL = 'accounts.UserAccount'
