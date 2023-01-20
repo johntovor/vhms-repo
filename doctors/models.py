@@ -11,8 +11,7 @@ class Doctor(models.Model):
     slug = models.SlugField(max_length=300, null=True, blank=True)
 
     def __str__(self):
-        if self.name:
-            return f'{self.name}'
+        return f'{self.name}'
 
     class Meta:
         ordering = ('-date_added',)

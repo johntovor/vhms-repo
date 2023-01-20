@@ -81,18 +81,18 @@
         </li>
         {% if request.user.is_client %}
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#appointment" aria-expanded="false" aria-controls="appointment">
                 <span class="menu-icon">
                     <i class="mdi mdi-account-clock-outline text-success"></i>
                 </span>
                 <span class="menu-title">Appointments</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="appointment">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'departments:add-department' %}">Book Appointment</a>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'appointments:add-appointment' %}">Book Appointment</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'departments:department-list' %}">My Appointments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'appointments:appointment-list' %}">My Appointments</a></li>
                 </ul>
             </div>
         </li>
@@ -100,18 +100,18 @@
 
         {% if request.user.is_admin %}
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#appointment" aria-expanded="false" aria-controls="appointment">
                 <span class="menu-icon">
                     <i class="mdi mdi-account-clock-outline text-success"></i>
                 </span>
                 <span class="menu-title">Appointments</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="appointment">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'departments:add-department' %}">Book Appointment</a>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'appointments:add-appointment' %}">Book Appointment</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'departments:department-list' %}">My Appointments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'appointments:appointment-list' %}">All Appointments</a></li>
                 </ul>
             </div>
         </li>

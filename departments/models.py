@@ -14,8 +14,7 @@ class Department(models.Model):
     slug = models.SlugField(max_length=560, null=True, blank=True)
 
     def __str__(self):
-        if self.name:
-            return f'{self.name}'
+        return f'{self.name}'
 
     class Meta:
         ordering = ('-date_created',)
