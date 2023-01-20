@@ -124,7 +124,7 @@ class ClientForm(forms.ModelForm):
     }))
     region_or_state = forms.CharField(required=True, widget=forms.TextInput(attrs={
         'class': 'form-control mb-4',
-        'placeholder': 'Region/State'
+        'placeholder': 'Region'
     }))
     city_or_town = forms.CharField(required=True, widget=forms.TextInput(attrs={
         'class': 'form-control mb-4',

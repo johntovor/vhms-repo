@@ -10,7 +10,7 @@
         <ul class="navbar-nav w-100">
             <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                    <input type="text" class="form-control" placeholder="Search for business by name or owner">
+                    <input type="text" class="form-control" placeholder="Search for doctor by name">
                 </form>
             </li>
         </ul>
@@ -21,39 +21,40 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="createbuttonDropdown">
                     <!-- <h6 class="p-3 mb-0">Projects</h6> -->
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item" href="">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
-                                <i class="mdi mdi-database-plus text-primary"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1">Register Business</p>
-                        </div>
-                    </a>
                     {% if request.user.is_admin %}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item" href="">
+                    <a class="dropdown-item preview-item" href="{% url 'doctors:add-doctor' %}">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
-                                <i class="mdi mdi-square-inc-cash text-info"></i>
+                                <i class="mdi mdi-doctor text-primary"></i>
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1">Add Payment</p>
+                            <p class="preview-subject ellipsis mb-1">Add Doctor</p>
+                        </div>
+                    </a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item" href="{% url 'departments:add-department' %}">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-hospital-building text-info"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content">
+                            <p class="preview-subject ellipsis mb-1">Add Department</p>
                         </div>
                     </a>
                     {% endif %}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{% url 'appointments:appointment-list' %}">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
-                                <i class="mdi mdi-layers text-danger"></i>
+                                <i class="mdi mdi-account-clock-outline text-danger"></i>
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1">More</p>
+                            <p class="preview-subject ellipsis mb-1">Check Appointment</p>
                         </div>
                     </a>
                     <div class="dropdown-divider"></div>

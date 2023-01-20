@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from accounts.models import UserAccount
+from appointments.models import Appointment
+from doctors.models import Doctor
+from departments.models import Department
 
 
 @login_required(login_url='index:index')
@@ -14,11 +17,31 @@ def dashboard(request):
 
 
     total_users_count = UserAccount.objects.all().count()
+    total_clients_count = UserAccount.objects.filter(is_client=True, is_superuser=False).count()
+    total_doctors_count = Doctor.objects.all().count()
+    total_departments_count = Department.objects.all().count()
+    total_appointments_count = Appointment.objects.all().count()
 
+    appointments = Appointment.objects.all()[:5]
+    doctors = Doctor.objects.all()[:10]
+    departments = Department.objects.all()[:5]
+
+    client_appointments = Appointment.objects.filter(user=request.user)[:5]
+    client_appointments_count = Appointment.objects.filter(user=request.user).count()
 
     context = {
         'total_users_count': total_users_count,
+        'total_clients_count': total_clients_count,
+        'total_doctors_count': total_doctors_count,
+        'total_departments_count': total_departments_count,
+        'total_appointments_count': total_appointments_count,
 
+        'appointments': appointments,
+        'doctors': doctors,
+        'departments': departments,
+
+        'client_appointments': client_appointments,
+        'client_appointments_count': client_appointments_count,
     }
 
     return render(request, template_name, context)

@@ -47,6 +47,12 @@
     <!-- ======= Top Bar ======= -->
 
 
+    <!-- ======= Alert Message ======= -->
+    <div class="col-lg-12 col-md-12 text-center mb-3">
+        {% include 'snippets/dashboard/_alert-messages.html' %}
+    </div>
+    <!-- ======= Alert Message ======= -->
+
     <!-- ======= Header ======= -->
     {% include 'snippets/_header.html' %}
     <!-- End Header -->
@@ -62,6 +68,9 @@
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
+    
+            <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Vendor JS Files -->
     <script src="{% static 'core/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>

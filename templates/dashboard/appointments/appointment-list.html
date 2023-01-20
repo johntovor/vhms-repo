@@ -22,24 +22,25 @@
                     
                     <div class="table-responsive">
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        #
-                                    </th>
-                                    <th> Client Name </th>
-                                    <th> Phone </th>
-                                    <th> Email </th>
-                                    <th> Appointed Date /Time</th>
-                                    <th> Title </th>
-                                    <th> Doctor </th>
-                                    <th> Department </th>
-                                    <th> Message </th>
-                                    <th> Action </th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 {% if request.user.is_admin %}
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th> Client Name </th>
+                                        <th> Phone </th>
+                                        <th> Email </th>
+                                        <th> Appointed Date / Time</th>
+                                        <th> Title </th>
+                                        <th> Doctor </th>
+                                        <th> Department </th>
+                                        <th> Message </th>
+                                        <th> Date Created </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     
                                     {% for appointment in admin_appointments %}
                                     <tr>
@@ -66,9 +67,28 @@
                                         </td>
                                     </tr>
                                     {% endfor %}
+                                </tbody>
                             
                                 {% else %}
                                     {% if client_appointments %}
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th> Client Name </th>
+                                            <th> Phone </th>
+                                            <th> Email </th>
+                                            <th> Appointed Date / Time</th>
+                                            <th> Title </th>
+                                            <th> Doctor </th>
+                                            <th> Department </th>
+                                            <th> Message </th>
+                                            <th> Date Created </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         {% for appointment in client_appointments %}
                                         <tr>
                                             <td>
@@ -94,11 +114,11 @@
                                             </td>
                                         </tr>
                                         {% endfor %}
+                                    </tbody>
                                     {% else %}
                                         <p>No data found.</p>
                                     {% endif %}
                                 {% endif %}
-                            </tbody>
                         </table>
                     </div>
                     
