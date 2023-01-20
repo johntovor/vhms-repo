@@ -1,0 +1,67 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-12 text-center">
+            <div class="">
+                <h3 class="page-title"> ALL DOCTORS LIST </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <a href="#" class="btn btn-md btn-primary py-2">EXPORT DATA</a>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Doctors</h4>
+                    {% if doctors %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th> Doctor Name </th>
+                                    <th> Department </th>
+                                    <th> Date Added </th>
+                                    <th> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for doctor in doctors %}
+                                <tr>
+                                    <td>
+                                        {{ forloop.counter }}
+                                    </td>
+                                    
+                                    <td> {{ doctor.name }} </td>
+                                    <td> {{ doctor.department.name }} </td>
+                                    <td> {{ doctor.date_added|date:"F d, Y" }} </td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="mdi mdi-circle-edit-outline text-primary" style="font-size: 30px;"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="mdi mdi-delete-forever text-danger" style="font-size: 30px;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                        <p>No data found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -11,7 +11,7 @@
     <div class="row justify-content-center mb-3">
         <div class="col-lg-12 text-center">
             <div class="">
-                <h3 class="page-title"> ADD A DEPARTMENT </h3>
+                <h3 class="page-title"> ADD A DOCTOR </h3>
             </div>
         </div>
     </div>
@@ -19,16 +19,16 @@
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title text-center">Please provide the details below to add a department to the system.</h4>
+                    <h4 class="card-title text-center">Please provide the details below to add a doctor to the system.</h4>
                     <!-- <p class="card-description"> Basic form layout </p> -->
                     <form method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            {{ department_form|crispy }}
+                            {{ doctor_form|crispy }}
                         </div>
 
                         <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-primary btn-block enter-btn py-3">ADD DEPARTMENT</button>
+                            <button type="submit" class="btn btn-primary btn-block enter-btn py-3">ADD DOCTOR</button>
                         </div>
                     </form>
                 </div>
