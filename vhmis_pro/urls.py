@@ -19,9 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 """admin text settings"""
-admin.site.site_header = 'KROMA Admin Panel'
-admin.site.site_title = 'KROMA Admin Panel'
-admin.site.index_title = 'KROMA Site Administration'
+admin.site.site_header = 'VHMS Admin Panel'
+admin.site.site_title = 'VHMS Admin Panel'
+admin.site.index_title = 'VHMS Site Administration'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
