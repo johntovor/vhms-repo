@@ -114,6 +114,7 @@ def signout(request):
 """User Profile"""
 
 
+@login_required(login_url='accounts:signin')
 def admin_profile(request):
     template_name = 'accounts/admin-profile.html'
 
@@ -126,6 +127,7 @@ def admin_profile(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:signin')
 def client_profile(request):
     template_name = 'accounts/client-profile.html'
 

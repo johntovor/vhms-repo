@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import Department
 from .forms import DepartmentForm
 
 
+@login_required(login_url='accounts:signin')
 def add_department(request):
     template_name = 'dashboard/departments/add-department.html'
 
@@ -28,6 +30,7 @@ def add_department(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:signin')
 def department_list(request):
 
     template_name = 'dashboard/departments/department-list.html'

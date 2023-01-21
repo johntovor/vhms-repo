@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import Doctor
 from .forms import DoctorForm
 
 
+@login_required(login_url='accounts:signin')
 def add_doctor(request):
     template_name = 'dashboard/doctors/add-doctor.html'
 
@@ -28,6 +30,7 @@ def add_doctor(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:signin')
 def doctor_list(request):
 
     template_name = 'dashboard/doctors/doctor-list.html'

@@ -47,6 +47,7 @@ def dashboard(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:signin')
 def clients_list(request):
     template_name = 'dashboard/clients.html'
 
@@ -58,6 +59,7 @@ def clients_list(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:signin')
 def admins_list(request):
     template_name = 'dashboard/admins.html'
 

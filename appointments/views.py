@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import Appointment
 from .forms import AppointmentForm
 
 
+@login_required(login_url='accounts:signin')
 def add_appointment(request):
     template_name = 'dashboard/appointments/book-appointment.html'
 
@@ -29,6 +31,7 @@ def add_appointment(request):
     return render(request, template_name, context)
 
 
+@login_required(login_url='accounts:signin')
 def appointment_list(request):
 
     template_name = 'dashboard/appointments/appointment-list.html'
