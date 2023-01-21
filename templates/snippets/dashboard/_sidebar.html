@@ -16,7 +16,7 @@
                     </div>
                     <div class="profile-name">
                         <h5 class="mb-0 font-weight-normal">{{ request.user.first_name }} {% if request.user.middle_name %}{{ request.user.middle_name }}{% endif %} {{ request.user.last_name }}</h5>
-                        <span>{% if request.user.is_admin %}Administrator{% endif %}{% if request.user.is_client %}Business Owner{% endif %}</span>
+                        <span>{% if request.user.is_admin %}Administrator{% endif %}{% if request.user.is_client %}Client{% endif %}</span>
                     </div>
                 </div>
                 <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -168,6 +168,15 @@
             </div>
         </li>
         {% endif %}
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'core:index' %}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-home"></i>
+                </span>
+                <span class="menu-title">Home Site</span>
+            </a>
+        </li>
         
     </ul>
 </nav>
