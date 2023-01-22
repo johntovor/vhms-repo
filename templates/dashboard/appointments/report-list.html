@@ -1,0 +1,111 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row justify-content-center mb-3">
+        <div class="col-lg-12 text-center">
+            <div class="">
+                <h3 class="page-title"> DIAGNOSTIC REPORTS LIST </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <a href="#" class="btn btn-md btn-primary py-2">EXPORT DATA</a>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Diagnostic Reports</h4>
+                    
+                    <div class="table-responsive">
+                        <table class="table">
+                                {% if request.user.is_admin %}
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th> Client Name </th>
+                                        <th> Doctor </th>
+                                        <th> Title </th>
+                                        <th> Remarks</th>
+                                        <th> Date Created </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for report in admin_reports %}
+                                    <tr>
+                                        <td>
+                                            {{ forloop.counter }}
+                                        </td>
+                                        
+                                        <td> {{ report.user.first_name }}  {{ report.user.last_name }} </td>
+                                        <td> {{ report.doctor.name }} </td>
+                                        <td> {{ report.title }} </td>
+                                        <td> {{ report.remarks }} </td>
+                                        <td> {{ report.date_created|date:"F d, Y" }} </td>
+                                        <td>
+                                            <a href="#">
+                                                <i class="mdi mdi-circle-edit-outline text-primary" style="font-size: 30px;"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="mdi mdi-delete-forever text-danger" style="font-size: 30px;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            
+                                {% else %}
+                                    {% if client_reports %}
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th> Doctor </th>
+                                            <th> Title </th>
+                                            <th> Remarks </th>
+                                            <th> Date Created </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for report in client_reports %}
+                                        <tr>
+                                            <td>
+                                                {{ forloop.counter }}
+                                            </td>
+                                            <td> {{ report.doctor.name }} </td>
+                                            <td> {{ report.title }} </td>
+                                            <td> {{ report.remarks }} </td>
+                                            <td> {{ report.date_created|date:"F d, Y" }} </td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="mdi mdi-circle-edit-outline text-primary" style="font-size: 30px;"></i>
+                                                </a>
+                                                <a href="#">
+                                                    <i class="mdi mdi-delete-forever text-danger" style="font-size: 30px;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {% else %}
+                                        <p>No data found.</p>
+                                    {% endif %}
+                                {% endif %}
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
